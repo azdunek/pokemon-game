@@ -22,7 +22,7 @@ public abstract class Pokemon {
         this.level = level;
         this.experience = experience;
         this.sound = sound;
-        this.attacks = attacks;
+        this.attacks = new ArrayList<>();
         this.vulnerability = vulnerability;
         this.picture = picture;
     }
