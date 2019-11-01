@@ -19,11 +19,11 @@ public class Pikachu extends Pokemon {
     }
 
     //TODO: ataki!
-    int attack() {
+   /* int attack() {
         Attack attack = getRandomAttack(); // userChooses Attack
 
         attack.getStrength();
         return damage;
-    }
+    } */
 
 }
