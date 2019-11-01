@@ -1,0 +1,5 @@
+package pokemons;
+
+public enum PokemonType {
+    ELECTRIC, GROUND, STEEL, WATER, GRASS, POISON, FIRE, FLYING, BUG, NORMAL, FAIRY, FIGHTING, PSYCHIC,ROCK, ICE, GHOST, DRAGON;
+}
