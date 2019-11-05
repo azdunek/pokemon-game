@@ -11,7 +11,11 @@ public  class Attack {
         this.strength = strength;
     }
 
-    public void udeAttack(){
+    public String getName() {
+        return name;
+    }
 
+    public int getStrength() {
+        return strength;
     }
 }

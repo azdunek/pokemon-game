@@ -1,6 +1,7 @@
 package pokemons;
 
 import attacks.Attack;
+import utils.RandomNumber;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,31 @@ public abstract class Pokemon {
         this.picture = picture;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+    public void displayAttackslist(){
+        for (int i=0; i<attacks.size(); i++) {
+            System.out.println("Attack number "+i+"  "+attacks.get(i).getName());
+        }
+    }
+
+    public ArrayList<Attack> getAttacks() {
+        return attacks;
+    }
+
+    public Attack getRandomAttack() {
+        int number = RandomNumber.fromRange(0, attacks.size() - 1);
+        return attacks.get(number);
+    }
 
 
+
+    public void setHP(int HP) {
+        this.HP = HP;
+    }
+
+    public int getHP() {
+        return HP;
+    }
 }

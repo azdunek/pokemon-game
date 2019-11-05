@@ -1,6 +1,25 @@
 package game;
 
 public class Images {
+    static String pokemonLogo="                                  ,'\\\n" +
+            "    _.----.        ____         ,'  _\\   ___    ___     ____\n" +
+            "_,-'       `.     |    |  /`.   \\,-'    |   \\  /   |   |    \\  |`.\n" +
+            "\\      __    \\    '-.  | /   `.  ___    |    \\/    |   '-.   \\ |  |\n" +
+            " \\.    \\ \\   |  __  |  |/    ,','_  `.  |          | __  |    \\|  |\n" +
+            "   \\    \\/   /,' _`.|      ,' / / / /   |          ,' _`.|     |  |\n" +
+            "    \\     ,-'/  /   \\    ,'   | \\/ / ,`.|         /  /   \\  |     |\n" +
+            "     \\    \\ |   \\_/  |   `-.  \\    `'  /|  |    ||   \\_/  | |\\    |\n" +
+            "      \\    \\ \\      /       `-.`.___,-' |  |\\  /| \\      /  | |   |\n" +
+            "       \\    \\ `.__,'|  |`-._    `|      |__| \\/ |  `.__,'|  | |   |\n" +
+            "        \\_.-'       |__|    `-._ |              '-.|     '-.| |   |\n" +
+            "                                `'                            '-._|";
+
+
+
+
+
+
+
     static String pikachu="quu..__\n" +
             " $$$b  `---.__\n" +
             "  \"$$b        `--.                          ___.---uuudP\n" +
@@ -151,5 +170,9 @@ public class Images {
 
     public static String getSquirtle() {
         return squirtle;
+    }
+
+    public static String getPokemonLogo() {
+        return pokemonLogo;
     }
 }

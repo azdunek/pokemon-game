@@ -16,6 +16,11 @@ public class Arena {
         Trainer trainer2 = new Trainer("Ash");
         Trainer trainer3 = new Trainer("Brock");
         Trainer trainer4 = new Trainer("Misty");
+        trainers.add(trainer0);
+        trainers.add(trainer1);
+        trainers.add(trainer2);
+        trainers.add(trainer3);
+        trainers.add(trainer4);
     }
 
     public Trainer getRandomOpponent() {
