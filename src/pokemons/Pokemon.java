@@ -37,6 +37,14 @@ public abstract class Pokemon {
         }
     }
 
+    public PokemonType getType() {
+        return type;
+    }
+
+    public PokemonType getVulnerability() {
+        return vulnerability;
+    }
+
     public ArrayList<Attack> getAttacks() {
         return attacks;
     }
