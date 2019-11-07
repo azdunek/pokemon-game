@@ -2,6 +2,7 @@ package game;
 
 import attacks.Attack;
 import pokemons.Pokemon;
+import utils.RandomNumber;
 
 import java.io.IOException;
 import java.sql.SQLOutput;
@@ -59,8 +60,8 @@ public class Game {
         } else {
             System.out.println("You lost! You must try harder!");
         }
-
     }
+
 
     private void getPlayerName() {
         System.out.println("Enter your name: ");
@@ -117,15 +118,26 @@ public class Game {
         } else {
             attack = fightingPokemon.getRandomAttack();
         }
+        int calculatedDamage = calculateDamage(attack.getStrength(), attackingPokemon,defendingPokemon);
         System.out.println(trainer.getName().toUpperCase() + ": " + attackingPokemon.getClass().getSimpleName() + ", use " + attack.getName() + "!");
-        defendingPokemon.setHP(defendingPokemon.getHP() - attack.getStrength());
-        System.out.println(defendingPokemon.getClass().getSimpleName() + " got " + attack.getStrength() + " points of damage!");
+        defendingPokemon.setHP(defendingPokemon.getHP() - calculatedDamage);
+        System.out.println(defendingPokemon.getClass().getSimpleName() + " got " + calculatedDamage + " points of damage!");
         getHealthStatus(defendingPokemon);
         loading();
         clearConsole();
     }
 
-
+    // TODO: Write test for every possibility.
+    private int calculateDamage(int strength, Pokemon attackingPokemon, Pokemon defendingPokemon) {
+        int damage = strength + RandomNumber.fromRange(-10, 10);
+        if (attackingPokemon.getType() == defendingPokemon.getType()) {
+            return (int) (damage * 0.4);
+        }
+        if (attackingPokemon.getType() == defendingPokemon.getVulnerability()) {
+            return (int) (damage * 1.4);
+        }
+        return damage;
+    }
 
 
     private void getHealthStatus(Pokemon pokemon) {
@@ -145,11 +157,6 @@ public class Game {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
-    }
-
-    public int randomWithRange(int min, int max) {
-        int range = (max - min) + 1;
-        return (int) (Math.random() * range) + min;
     }
 
 }
