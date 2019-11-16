@@ -31,9 +31,10 @@ public abstract class Pokemon {
     public String getPicture() {
         return picture;
     }
-    public void displayAttackslist(){
-        for (int i=0; i<attacks.size(); i++) {
-            System.out.println("Attack number "+i+"  "+attacks.get(i).getName());
+
+    public void displayAttackslist() {
+        for (int i = 0; i < attacks.size(); i++) {
+            System.out.println("Attack number " + i + "  " + attacks.get(i).getName());
         }
     }
 
@@ -53,8 +54,6 @@ public abstract class Pokemon {
         int number = RandomNumber.fromRange(0, attacks.size() - 1);
         return attacks.get(number);
     }
-
-
 
     public void setHP(int HP) {
         this.HP = HP;

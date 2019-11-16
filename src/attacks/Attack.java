@@ -1,8 +1,6 @@
 package attacks;
 
-import pokemons.PokemonType;
-
-public  class Attack {
+public class Attack {
     private String name;
     private int strength;
 
