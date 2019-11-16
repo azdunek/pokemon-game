@@ -4,22 +4,18 @@ import attacks.Attack;
 import pokemons.Pokemon;
 import utils.RandomNumber;
 
-import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
-public class Game {
+class Game {
     private Trainer player;
-    Scanner scanner = new Scanner(System.in);
-    Arena arena = new Arena();
+    private Scanner scanner = new Scanner(System.in);
+    private Arena arena = new Arena();
     private Trainer opponent;
     private Pokemon fightingPokemon;
     private Pokemon myPokemon;
-    private final int TIMING = 500;
+    private final int TIMING = 1500;
 
-    public void play() {
-        //TODO: z metody atakującej wyodrębnić metodę obliczającą siłę obrażeń w zależności od typu twojego pokemona i typu pokemona przeciwnika
-
+    void play() {
         System.out.println(Images.getPokemonLogo());
         loading();
         getPlayerName();
@@ -27,11 +23,11 @@ public class Game {
         welcomePlayer();
         loading();
         clearConsole();
+
         System.out.println("Selecting opponent...");
         opponent = arena.getRandomOpponent();
         loading();
         System.out.println("Your opponent: " + opponent.getName());
-
 
         System.out.println("Selecting pokemon...");
         fightingPokemon = opponent.chooseRandomPokemon();
@@ -39,10 +35,9 @@ public class Game {
         clearConsole();
 
         choosePokemonDialog(opponent, fightingPokemon);
-        // TODO: User wants to choose fighting pokemon from default set of Pokemons by himself.
 
         System.out.println("Selecting pokemon...");
-        myPokemon = player.chooseRandomPokemon();
+        myPokemon = player.selectPokemon();
         loading();
         clearConsole();
 
@@ -50,9 +45,7 @@ public class Game {
         displayLetsFight();
         fight();
         announceWinner();
-
     }
-
 
     private void announceWinner() {
         if (myPokemon.getHP() > fightingPokemon.getHP()) {
@@ -61,7 +54,6 @@ public class Game {
             System.out.println("You lost! You must try harder!");
         }
     }
-
 
     private void getPlayerName() {
         System.out.println("Enter your name: ");
@@ -89,16 +81,12 @@ public class Game {
         }
     }
 
-
     private void choosePokemonDialog(Trainer trainer, Pokemon pokemon) {
-        // TODO: Make more shouts and get random one.
-        String message = " I choose you!";
-        System.out.println(trainer.getName().toUpperCase() + ": " + pokemon.getClass().getSimpleName() + message);
+        System.out.println(trainer.getName().toUpperCase() + ": " + pokemon.getClass().getSimpleName() + trainer.getRandomShout());
         System.out.println(pokemon.getPicture());
         loading();
         clearConsole();
     }
-
 
     private Attack chooseAttack(Pokemon pokemon) {
         pokemon.displayAttackslist();
@@ -118,7 +106,7 @@ public class Game {
         } else {
             attack = fightingPokemon.getRandomAttack();
         }
-        int calculatedDamage = calculateDamage(attack.getStrength(), attackingPokemon,defendingPokemon);
+        int calculatedDamage = calculateDamage(attack.getStrength(), attackingPokemon, defendingPokemon);
         System.out.println(trainer.getName().toUpperCase() + ": " + attackingPokemon.getClass().getSimpleName() + ", use " + attack.getName() + "!");
         defendingPokemon.setHP(defendingPokemon.getHP() - calculatedDamage);
         System.out.println(defendingPokemon.getClass().getSimpleName() + " got " + calculatedDamage + " points of damage!");
@@ -127,8 +115,7 @@ public class Game {
         clearConsole();
     }
 
-    // TODO: Write test for every possibility.
-    private int calculateDamage(int strength, Pokemon attackingPokemon, Pokemon defendingPokemon) {
+    int calculateDamage(int strength, Pokemon attackingPokemon, Pokemon defendingPokemon) {
         int damage = strength + RandomNumber.fromRange(-10, 10);
         if (attackingPokemon.getType() == defendingPokemon.getType()) {
             return (int) (damage * 0.4);
@@ -139,11 +126,9 @@ public class Game {
         return damage;
     }
 
-
     private void getHealthStatus(Pokemon pokemon) {
         System.out.println(pokemon.getClass().getSimpleName() + " health = " + pokemon.getHP());
     }
-
 
     private void loading() {
         try {
@@ -158,5 +143,4 @@ public class Game {
             System.out.println();
         }
     }
-
 }
